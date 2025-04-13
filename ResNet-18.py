@@ -15,7 +15,7 @@ class AptosDataset(Dataset):
         """
         Args:
             csv_file (str): 包含 id_code 与 diagnosis 两列的 CSV 文件（训练标签）。
-            img_dir (str): 训练图像所在的文件夹，比如 "aptos2019-blindness-detection/train_images"。
+            img_dir (str): 训练图像所在的文件夹，aptos2019-blindness-detection/train_images"
             transform (callable, optional): 图片预处理和数据增强方法。
         """
         self.data = pd.read_csv(csv_file)
@@ -35,16 +35,8 @@ class AptosDataset(Dataset):
             img = self.transform(img)
         return img, label
 
-
-# 测试集 Dataset：测试集没有标签，返回图片和 id；可选择传入 sample_submission.csv 来确定顺序
 class AptosTestDataset(Dataset):
     def __init__(self, img_dir, transform=None, csv_file=None):
-        """
-        Args:
-            img_dir (str): 测试图像所在的文件夹，比如 "aptos2019-blindness-detection/test_images"。
-            transform (callable, optional): 图片预处理方法。
-            csv_file (str, optional): CSV 文件（比如 sample_submission.csv），从中读取测试图片的 id 顺序。
-        """
         self.img_dir = img_dir
         self.transform = transform
         if csv_file is not None:
@@ -141,7 +133,7 @@ if __name__ == '__main__':
                              std=[0.229, 0.224, 0.225])
     ])
 
-    # 训练集 CSV 文件和图像文件夹路径（请根据实际情况修改）
+    # 训练集 CSV 文件和图像文件夹路径
     train_csv = 'aptos2019-blindness-detection/train.csv'
     train_img_dir = 'aptos2019-blindness-detection/train_images'
     train_dataset = AptosDataset(train_csv, train_img_dir, transform=train_transforms)
