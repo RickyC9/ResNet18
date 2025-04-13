@@ -178,7 +178,7 @@ if __name__ == '__main__':
                              std=[0.229, 0.224, 0.225])
     ])
 
-    sample_csv = 'aptos2019-blindness-detection/sample_submission.csv'  # 可选
+    sample_csv = 'aptos2019-blindness-detection/sample_submission.csv'
     test_img_dir = 'aptos2019-blindness-detection/test_images'
     test_dataset = AptosTestDataset(test_img_dir, transform=test_transforms, csv_file=sample_csv)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
